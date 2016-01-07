@@ -1,13 +1,17 @@
-#carousel {
+#carousel_window {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   border: 1px solid black;
   width: 800px;
   height: 600px;
-  background-color: white;
   margin: 0 auto;
   position: relative;
+  z-index: 90;
+  overflow: hidden;
 }
 
-.container {
+.page_container {
   width: 1000px;
   margin: 0 auto;
   text-align: center;
@@ -20,6 +24,6 @@
   position: absolute;
   clip: rect(0px,800px,600px,0px) ;
   top: 0px;
-  left: 0;
-
+  left: 0px;
+  z-index: 1;
 }

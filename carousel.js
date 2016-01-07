@@ -2,7 +2,7 @@ $( document ).ready(function(){
   console.log("page loaded");
 
   var slide_interval = 2000; // 2sec
-  var carousel_timer = window.setInterval(slide_left, slide_interval);
+  var carousel_timer = window.setInterval(slide_left, slide_interval); // pause for a second while I debug the css layering issue
 
 });
 
