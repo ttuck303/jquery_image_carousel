@@ -27,3 +27,26 @@
   left: 0px;
   z-index: 1;
 }
+
+.navigation_arrows {
+  z-index: 20;
+  font-size: 90px;
+  position: absolute;
+  top: 250px;
+  color: white;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.navigation_arrows:hover {
+  opacity: 1;
+}
+
+#left_arrow {
+  left: 0;
+
+}
+
+#right_arrow {
+  right: 0;
+}

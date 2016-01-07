@@ -11,3 +11,25 @@ need to adjust z index or opacity somehow to make sure that only the active imag
 need to create a counter so that once the slides reach the end, they can reset to the starting position
 may need to store the images in an array or something to easily loop over them and adjust depending on how many images are in play
 
+
+
+get into the details of how the slider should actually work
+
+say you have N images in your images folder
+for now, just going to put their file names in an array
+
+So, you have an array of N images
+
+
+if arrow button is pressed
+  slide in the direction of the button
+else if dot (jumper we'll call it because you can 'jump' to an image)
+  scroll to corresponding image
+else (if no action is taken)
+  if the last image is the current image
+    reset slider action (slide to image 0 action)
+  else
+    slide left every 5 seconds
+end
+reset the timer (any time a picture is moved, manually or automatically, the timer should reset)
+(but really, the timer is already running if the the images are moved automatically, so it should only be on manual moves, although it might be cleaner to jsut reset at the end of every loop)
