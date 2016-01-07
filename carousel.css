@@ -27,6 +27,13 @@
   left: 0px;
   z-index: 1;
 }
+.image {
+  position: absolute;
+  height: 600px;
+  clip: rect(0px,800px,600px,0px) ;
+  margin: 0;
+  z-index: 1;
+}
 
 .navigation_arrows {
   z-index: 20;
@@ -49,4 +56,24 @@
 
 #right_arrow {
   right: 0;
+}
+
+.jumpers {
+  position: absolute;
+  background-color: blue;
+  opacity: 0.5;
+  z-index: 35;
+  height: 100px;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+#image_holder {
+  position: absolute;
+  top: 0;
+  left:0;
+  background-color: red;
+  opacity: 0.6;
+
 }

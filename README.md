@@ -33,3 +33,8 @@ else (if no action is taken)
 end
 reset the timer (any time a picture is moved, manually or automatically, the timer should reset)
 (but really, the timer is already running if the the images are moved automatically, so it should only be on manual moves, although it might be cleaner to jsut reset at the end of every loop)
+
+Image css is messed up because all the images are on top of each other. 
+  Can't do float and absolute positioning at the same time. 
+  Can't do clip without absolute positioning (I believe). 
+I guess positionin each image individually wouldn't be that hard with jquery. Seems like the dumb way but I am blanking on other ways right now, so it goes. 
