@@ -50,14 +50,13 @@
   right: 0;
 }
 
-.jumpers {
+#jumper_container {
   position: absolute;
-  background-color: blue;
-  opacity: 0.5;
+  bottom: 0;
+  opacity: 1;
   z-index: 35;
   height: 100px;
   bottom: 0;
-  width: 100%;
   text-align: center;
 }
 
@@ -68,4 +67,27 @@
   background-color: red;
   opacity: 1;
 
+}
+
+.jumper {
+  cursor: pointer;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border: 1px solid black;
+  border-radius: 50%;
+  background-color: white;
+  opacity: 0.6;
+  float: left;
+  margin: 50px 10px;
+  z-index: 40;
+}
+
+.jumper:hover {
+  opacity: 1;
+}
+
+.jumper.active {
+  background-color: gray;
+  opacity: 1;
 }
