@@ -1,26 +1,33 @@
 $( document ).ready(function(){
   console.log("page loaded");
-  var left_arrow = $('#left_arrow');
-  var right_arrow = $('#right_arrow');
-
   const images = ['DSC00776.jpg', 'DSC00938.jpg', 'DSC00958.jpg', 'DSC01049.jpg'];
 
-  
   initialize_image_position(images);
+  initialize_listeners();
+  current_image_id = 0;
+  num_images = images.length;
 
-  left_arrow.on("click", function(){
-    console.log("left arrow clicked");
-  });
-
-
-  right_arrow.on("click", function(){
-    console.log("right arrow clicked");
-  });
-
-  var slide_interval = 3000; // 3sec
-  var carousel_timer = window.setInterval(slide_left, slide_interval); // pause for a second while I debug the css layering issue
-
+  slide_interval = 3000; // 3sec
+  //var carousel_timer = window.setInterval(slide_left, slide_interval); // pause for a second while I debug the css layering issue
+  carousel_timer = window.setInterval(carousel_loop, slide_interval); 
 });
+
+var initialize_listeners = function(){
+
+  $('#left_arrow').on("click", function(){
+    console.log("left arrow clicked");
+    current_image_id = index_cleanser(current_image_id-1);
+    manual_move(current_image_id);
+  });
+
+  $('#right_arrow').on("click", function(){
+    console.log("right arrow clicked");
+    current_image_id = index_cleanser(current_image_id+1);
+    manual_move(current_image_id);
+  });
+
+  // initialize jumpers here
+};
 
 var initialize_image_position = function(images){
   var image_holder = $("#image_holder");
@@ -29,18 +36,33 @@ var initialize_image_position = function(images){
     $('#'+i).css("left", i*800);
     console.log("appending "+ '<img src ="images/'+images[i]+'" class="image" id=' + i + '>');
   };
-
-  // deciding between loading all images into a single div and jsut sliding the div
-  // or adding a new DOM element for each image and then manipulating each at the same time
-  // #1 seems better
-  // add each image into the div containing images with float left?
-  // move the position of the first image and the others should follow suit
-
 };
 
-var slide_left = function(){
-  console.log("attempting to slide to the left...");
-  $('#image_holder').animate({'left': '-=800px'}, 1000);
-  console.log( $('.current_image').css('left'));
+var slide_to_image_n = function(n){
+  var left_position = (-800*n)+"px";
+  console.log("attempting to slide to "+left_position);
+  $('#image_holder').animate({'left': left_position}, 1000);
 };
 
+var index_cleanser = function(desired_image_index){
+  if (desired_image_index < 0){
+    return (num_images - 1);
+  } else if (desired_image_index >= num_images ){
+    return 0;
+  } else {
+    return desired_image_index;
+  };
+};
+
+var manual_move = function(n){
+  clearInterval(carousel_timer);
+  n = index_cleanser(n);
+  slide_to_image_n(n);
+  carousel_timer = window.setInterval(carousel_loop, slide_interval); 
+};
+
+var carousel_loop = function(){
+  current_image_id = index_cleanser(current_image_id+1);
+  console.log("updating next_image_id as "+current_image_id);
+  slide_to_image_n(current_image_id);
+};
